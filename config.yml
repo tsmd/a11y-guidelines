@@ -17,3 +17,7 @@ disableKinds:
   - taxonomy
   - taxonomyTerm
 DefaultContentLanguage: ja
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
