@@ -29,6 +29,6 @@ jobs:
       - run: npm test
       - uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.55.6'
+          hugo-version: '0.74.3'
       - run: npm run build
       - uses: treosh/lighthouse-ci-action@v2

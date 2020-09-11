@@ -26,13 +26,13 @@ jobs:
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2.3.0
       with:
-        hugo-version: 0.55.6
+        hugo-version: 0.74.3
 
     - name: Build Site
       run: |
         npm install
         npm run build
-    
+
     - name: Build Hugo
       run: hugo --minify
 
@@ -43,7 +43,7 @@ jobs:
         go get -u github.com/WICG/webpackage/go/bundle/cmd/gen-bundle
         # Add path to run the package
         echo "::add-path::$HOME/go/bin"
-    
+
     - name: Generate Web Bundle 📦
       run: |
         # Create URL list from the files built by Hugo
@@ -58,7 +58,7 @@ jobs:
         #   - static directory is different from a web server implementation e.g. directory index
         #   - to ensure HTTP response headers
         gen-bundle -URLList urls.txt -primaryURL https://openameba.github.io/a11y-guidelines -o ${{ env.BUNDLE_NAME }}
-    
+
     - name: Generate Release ID
       id: generate-release-id
       run: |
@@ -84,7 +84,7 @@ jobs:
           Please download our web bundle named ${{ env.BUNDLE_NAME }} from the link below and check [web.dev](https://web.dev/web-bundles/#playing-around-with-web-bundles) to try out this bundle.
         draft: false
         prerelease: false
-    
+
     - name: Upload Release Asset
       uses: actions/upload-release-asset@v1.0.1
       env:
